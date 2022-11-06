@@ -88,10 +88,18 @@ class WeatherActivity : AppCompatActivity() {
         val realtime = weather.realtime
         val daily = weather.daily
         // 填充now.xml布局中数据
-        val currentTempText = "${realtime.temperature.toInt()} ℃"
+        val currentTempText = "${realtime.temperature.toInt()} / ${realtime.apparent_temperature.toInt()}℃"
         currentTemp.text = currentTempText
+/*        val humidityText = "Wind ${realtime.wind.speed.toInt()}km/h | Humidity${realtime.humidity} "
+        humidity.text = humidityText
+        val visibilityText = "Visibility${realtime.visibility.toInt()}m"
+        visibility.text = visibilityText
+        val windText = "Wind ${realtime.wind.speed.toInt()}km/h"
+        wind.text = windText*/
         currentSky.text = getSky(realtime.skycon).info
-        val currentPM25Text = "空气指数 ${realtime.airQuality.aqi.chn.toInt()}"
+        val humidityText = "Wind ${realtime.wind.speed.toInt()}km/h | Humidity ${realtime.humidity}"
+        humidity.text = humidityText
+        val currentPM25Text = "Visibility ${realtime.visibility.toInt()}km | AirIndex ${realtime.airQuality.aqi.chn.toInt()}"
         currentAQI.text = currentPM25Text
         nowLayout.setBackgroundResource(getSky(realtime.skycon).bg)
         // 填充forecast.xml布局中的数据
